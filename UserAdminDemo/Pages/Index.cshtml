@@ -8,3 +8,37 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<div>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Created</th>
+        </tr>
+        @if (Model.Profiles != null)
+        {
+            @foreach (var profile in Model.Profiles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => profile.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => profile.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => profile.Role)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => profile.CreatedAt)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@profile.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>
